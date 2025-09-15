@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import './i18n';
-import LandingPage from './components/LandingPage';
+import { LandingPage } from './components/LandingPage';
 import AdminPanel from './components/AdminPanel';
 
 function App() {
