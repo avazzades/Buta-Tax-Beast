@@ -1,42 +1,18 @@
 backend:
   name: git-gateway
-  branch: main
+  branch: main   # or "master" depending on your repo
 
-media_folder: public/images
-public_folder: /images
+media_folder: "public/uploads"   # where uploaded images are stored
+public_folder: "/uploads"
 
 collections:
-  - name: "settings"
-    label: "Site Settings"
+  - name: "pages"
+    label: "Pages"
     files:
-      - label: "Contact Information"
-        name: "contact"
-        file: "content/contact.md"
+      - file: "src/content/home.json"
+        label: "Homepage"
+        name: "home"
         fields:
-          - {label: "Phone", name: "phone", widget: "string"}
-          - {label: "Email", name: "email", widget: "string"}
-          - {label: "Address", name: "address", widget: "text"}
-          - {label: "Business Hours", name: "hours", widget: "string"}
-
-  - name: "services"
-    label: "Services"
-    folder: "content/services"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Description", name: "description", widget: "text"}
-      - {label: "Price", name: "price", widget: "string"}
-      - {label: "Features", name: "features", widget: "list"}
-      - {label: "Featured Image", name: "image", widget: "image", required: false}
-
-  - name: "testimonials"
-    label: "Testimonials"
-    folder: "content/testimonials"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Client Name", name: "name", widget: "string"}
-      - {label: "Company", name: "company", widget: "string"}
-      - {label: "Review", name: "review", widget: "text"}
-      - {label: "Rating", name: "rating", widget: "number", min: 1, max: 5}
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Body", name: "body", widget: "text" }
