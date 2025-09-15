@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { ArrowRight, CheckCircle, Star, Users, Award, TrendingUp } from 'lucide-react';
 
 export const Hero = () => {
+  const { t } = useTranslation();
   const [email, setEmail] = useState('');
 
   const handleGetStarted = () => {
@@ -14,10 +16,17 @@ export const Hero = () => {
   };
 
   const stats = [
-    { icon: Users, value: '5,000+', label: 'Happy Clients' },
-    { icon: Award, value: '15+', label: 'Years Experience' },
-    { icon: TrendingUp, value: '$50M+', label: 'Taxes Saved' },
-    { icon: Star, value: '4.9/5', label: 'Client Rating' }
+    { icon: Users, value: '5,000+', label: t('hero.stats.clients') },
+    { icon: Award, value: '15+', label: t('hero.stats.experience') },
+    { icon: TrendingUp, value: '$50M+', label: t('hero.stats.saved') },
+    { icon: Star, value: '4.9/5', label: t('hero.stats.rating') }
+  ];
+
+  const benefits = [
+    t('hero.benefits.savings'),
+    t('hero.benefits.support'),
+    t('hero.benefits.protection'),
+    t('hero.benefits.experts')
   ];
 
   return (
@@ -38,32 +47,26 @@ export const Hero = () => {
                 <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
               ))}
             </div>
-            <span className="text-gray-600 font-medium">Trusted by 5,000+ clients</span>
+            <span className="text-gray-600 font-medium">{t('hero.trusted')}</span>
           </div>
 
           {/* Main headline */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-            Your Trusted
+            {t('hero.title')}
             <span className="block bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">
-              Tax & Accounting
+              {t('hero.subtitle')}
             </span>
-            Partner
+            {t('hero.partner')}
           </h1>
 
           {/* Subheadline */}
           <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Professional tax preparation, strategic planning, and accounting services 
-            that save you time and money. From individuals to enterprises.
+            {t('hero.description')}
           </p>
 
           {/* Key benefits */}
           <div className="flex flex-wrap justify-center gap-4 mb-10">
-            {[
-              'Save 15-30% on taxes',
-              'Year-round support',
-              'Audit protection included',
-              'Expert CPAs'
-            ].map((benefit, index) => (
+            {benefits.map((benefit, index) => (
               <div key={index} className="flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 border border-gray-200">
                 <CheckCircle className="h-5 w-5 text-emerald-500" />
                 <span className="text-gray-700 font-medium">{benefit}</span>
@@ -76,7 +79,7 @@ export const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-3">
               <Input
                 type="email"
-                placeholder="Enter your email"
+                placeholder={t('hero.cta.placeholder')}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="flex-1 h-12 px-4 border-2 border-gray-200 focus:border-emerald-500 rounded-lg"
@@ -85,11 +88,11 @@ export const Hero = () => {
                 onClick={handleGetStarted}
                 className="h-12 px-8 bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-700 hover:to-blue-700 text-white font-semibold rounded-lg transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
               >
-                Get Started
+                {t('hero.cta.button')}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </div>
-            <p className="text-sm text-gray-500 mt-3">Free consultation • No obligation • Expert advice</p>
+            <p className="text-sm text-gray-500 mt-3">{t('hero.cta.subtitle')}</p>
           </div>
 
           {/* Stats */}
@@ -111,14 +114,14 @@ export const Hero = () => {
       <div className="absolute top-1/4 left-8 hidden lg:block">
         <div className="bg-white rounded-lg shadow-xl p-4 transform rotate-3 hover:rotate-0 transition-transform duration-300">
           <div className="text-emerald-600 font-bold text-2xl">$15K</div>
-          <div className="text-gray-600 text-sm">Average Savings</div>
+          <div className="text-gray-600 text-sm">{t('hero.floating.savings')}</div>
         </div>
       </div>
       
       <div className="absolute top-1/3 right-8 hidden lg:block">
         <div className="bg-white rounded-lg shadow-xl p-4 transform -rotate-3 hover:rotate-0 transition-transform duration-300">
           <div className="text-blue-600 font-bold text-2xl">48hrs</div>
-          <div className="text-gray-600 text-sm">Average Turnaround</div>
+          <div className="text-gray-600 text-sm">{t('hero.floating.turnaround')}</div>
         </div>
       </div>
     </section>

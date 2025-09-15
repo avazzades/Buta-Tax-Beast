@@ -1,7 +1,9 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Separator } from './ui/separator';
+import { LanguageSwitcher } from './LanguageSwitcher';
 import { 
   Facebook, 
   Twitter, 
@@ -15,6 +17,8 @@ import {
 } from 'lucide-react';
 
 export const Footer = () => {
+  const { t } = useTranslation();
+
   const handleNewsletterSignup = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -30,51 +34,16 @@ export const Footer = () => {
 
   const currentYear = new Date().getFullYear();
 
-  const footerLinks = {
-    services: [
-      'Individual Tax Filing',
-      'Business Tax Services',
-      'Corporate Accounting',
-      'Bookkeeping',
-      'Tax Planning',
-      'Audit Support'
-    ],
-    company: [
-      'About Us',
-      'Our Team',
-      'Careers',
-      'Case Studies',
-      'Client Portal',
-      'Contact Us'
-    ],
-    resources: [
-      'Tax Calculator',
-      'Knowledge Base',
-      'Blog',
-      'Tax Forms',
-      'Webinars',
-      'Newsletter'
-    ],
-    legal: [
-      'Privacy Policy',
-      'Terms of Service',
-      'Cookie Policy',
-      'Data Protection',
-      'Compliance',
-      'Disclaimer'
-    ]
-  };
-
   return (
     <footer className="bg-gray-900 text-white">
       {/* Newsletter Section */}
       <div className="bg-gradient-to-r from-emerald-600 to-blue-600 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 className="text-3xl font-bold mb-4">
-            Stay Updated on Tax Changes
+            {t('footer.newsletter.title')}
           </h3>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Get the latest tax updates, tips, and strategies delivered to your inbox monthly.
+            {t('footer.newsletter.description')}
           </p>
           
           <form onSubmit={handleNewsletterSignup} className="max-w-md mx-auto">
@@ -82,7 +51,7 @@ export const Footer = () => {
               <Input
                 type="email"
                 name="email"
-                placeholder="Enter your email"
+                placeholder={t('footer.newsletter.placeholder')}
                 required
                 className="flex-1 h-12 px-4 bg-white text-gray-900 border-0 rounded-lg"
               />
@@ -90,7 +59,7 @@ export const Footer = () => {
                 type="submit"
                 className="h-12 px-8 bg-white text-emerald-600 hover:bg-gray-100 font-semibold rounded-lg transform hover:scale-105 transition-all duration-200"
               >
-                Subscribe
+                {t('footer.newsletter.button')}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </div>
@@ -109,37 +78,36 @@ export const Footer = () => {
                   <span className="text-white font-bold text-xl">TP</span>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold">TaxPro</div>
-                  <div className="text-sm text-gray-400">Tax & Accounting</div>
+                  <div className="text-2xl font-bold">{t('header.companyName')}</div>
+                  <div className="text-sm text-gray-400">{t('header.tagline')}</div>
                 </div>
               </div>
               
               <p className="text-gray-400 mb-6 leading-relaxed">
-                Professional tax and accounting services you can trust. We help individuals and businesses 
-                optimize their financial strategies and achieve their goals.
+                {t('footer.company.description')}
               </p>
               
               <div className="space-y-3 mb-6">
                 <div className="flex items-center space-x-3">
                   <Phone className="h-5 w-5 text-emerald-500" />
-                  <span>(555) 123-4567</span>
+                  <span>{t('header.phone')}</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 text-emerald-500" />
-                  <span>info@taxpro.com</span>
+                  <span>{t('header.email')}</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin className="h-5 w-5 text-emerald-500" />
-                  <span>Nationwide Service</span>
+                  <span>{t('header.serving')}</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Clock className="h-5 w-5 text-emerald-500" />
-                  <span>Mon-Fri: 8AM-6PM EST</span>
+                  <span>{t('footer.company.hours')}</span>
                 </div>
               </div>
               
               {/* Social Links */}
-              <div className="flex space-x-4">
+              <div className="flex items-center space-x-4 mb-6">
                 {[
                   { icon: Facebook, name: 'Facebook' },
                   { icon: Twitter, name: 'Twitter' },
@@ -157,14 +125,20 @@ export const Footer = () => {
                   </Button>
                 ))}
               </div>
+
+              {/* Language Switcher */}
+              <div className="flex items-center space-x-3">
+                <span className="text-sm text-gray-400">Language:</span>
+                <LanguageSwitcher variant="ghost" size="sm" />
+              </div>
             </div>
 
             {/* Services */}
             <div>
-              <h4 className="text-lg font-semibold mb-6">Services</h4>
+              <h4 className="text-lg font-semibold mb-6">{t('footer.links.services')}</h4>
               <ul className="space-y-3">
-                {footerLinks.services.map((link) => (
-                  <li key={link}>
+                {t('footer.serviceLinks', { returnObjects: true }).map((link, index) => (
+                  <li key={index}>
                     <button 
                       onClick={() => alert(`${link} page coming soon!`)}
                       className="text-gray-400 hover:text-white transition-colors duration-200"
@@ -178,10 +152,10 @@ export const Footer = () => {
 
             {/* Company */}
             <div>
-              <h4 className="text-lg font-semibold mb-6">Company</h4>
+              <h4 className="text-lg font-semibold mb-6">{t('footer.links.company')}</h4>
               <ul className="space-y-3">
-                {footerLinks.company.map((link) => (
-                  <li key={link}>
+                {t('footer.companyLinks', { returnObjects: true }).map((link, index) => (
+                  <li key={index}>
                     <button 
                       onClick={() => alert(`${link} page coming soon!`)}
                       className="text-gray-400 hover:text-white transition-colors duration-200"
@@ -195,10 +169,10 @@ export const Footer = () => {
 
             {/* Resources */}
             <div>
-              <h4 className="text-lg font-semibold mb-6">Resources</h4>
+              <h4 className="text-lg font-semibold mb-6">{t('footer.links.resources')}</h4>
               <ul className="space-y-3">
-                {footerLinks.resources.map((link) => (
-                  <li key={link}>
+                {t('footer.resourceLinks', { returnObjects: true }).map((link, index) => (
+                  <li key={index}>
                     <button 
                       onClick={() => alert(`${link} page coming soon!`)}
                       className="text-gray-400 hover:text-white transition-colors duration-200"
@@ -212,10 +186,10 @@ export const Footer = () => {
 
             {/* Legal */}
             <div>
-              <h4 className="text-lg font-semibold mb-6">Legal</h4>
+              <h4 className="text-lg font-semibold mb-6">{t('footer.links.legal')}</h4>
               <ul className="space-y-3">
-                {footerLinks.legal.map((link) => (
-                  <li key={link}>
+                {t('footer.legalLinks', { returnObjects: true }).map((link, index) => (
+                  <li key={index}>
                     <button 
                       onClick={() => alert(`${link} page coming soon!`)}
                       className="text-gray-400 hover:text-white transition-colors duration-200"
@@ -237,17 +211,17 @@ export const Footer = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-gray-400 text-sm">
-              © {currentYear} TaxPro. All rights reserved.
+              © {currentYear} {t('header.companyName')}. {t('footer.copyright')}
             </div>
             <div className="flex items-center space-x-6 text-sm text-gray-400">
               <button onClick={() => alert('Privacy Policy coming soon!')}>
-                Privacy Policy
+                {t('footer.bottomLinks.privacy')}
               </button>
               <button onClick={() => alert('Terms of Service coming soon!')}>
-                Terms of Service
+                {t('footer.bottomLinks.terms')}
               </button>
               <button onClick={() => alert('Cookie Settings coming soon!')}>
-                Cookie Settings
+                {t('footer.bottomLinks.cookies')}
               </button>
             </div>
           </div>

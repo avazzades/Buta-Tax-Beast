@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from './ui/button';
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
+import { LanguageSwitcher } from './LanguageSwitcher';
 import { Menu, X, Phone, Mail, MapPin } from 'lucide-react';
 
 export const Header = () => {
+  const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -17,11 +20,11 @@ export const Header = () => {
   }, []);
 
   const navigation = [
-    { name: 'Services', href: '#services' },
-    { name: 'About', href: '#about' },
-    { name: 'Pricing', href: '#pricing' },
-    { name: 'Resources', href: '#resources' },
-    { name: 'Contact', href: '#contact' }
+    { name: t('header.nav.services'), href: '#services' },
+    { name: t('header.nav.about'), href: '#about' },
+    { name: t('header.nav.pricing'), href: '#pricing' },
+    { name: t('header.nav.resources'), href: '#resources' },
+    { name: t('header.nav.contact'), href: '#contact' }
   ];
 
   const handleNavClick = (href) => {
@@ -46,16 +49,19 @@ export const Header = () => {
           <div className="flex items-center space-x-6">
             <div className="flex items-center space-x-2">
               <Phone className="h-4 w-4" />
-              <span>(555) 123-4567</span>
+              <span>{t('header.phone')}</span>
             </div>
             <div className="flex items-center space-x-2">
               <Mail className="h-4 w-4" />
-              <span>info@taxpro.com</span>
+              <span>{t('header.email')}</span>
             </div>
           </div>
-          <div className="flex items-center space-x-2">
-            <MapPin className="h-4 w-4" />
-            <span>Serving nationwide with local expertise</span>
+          <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2">
+              <MapPin className="h-4 w-4" />
+              <span>{t('header.serving')}</span>
+            </div>
+            <LanguageSwitcher variant="ghost" size="sm" />
           </div>
         </div>
       </div>
@@ -76,8 +82,8 @@ export const Header = () => {
                     <span className="text-white font-bold text-xl">TP</span>
                   </div>
                   <div>
-                    <div className="text-xl font-bold text-gray-900">TaxPro</div>
-                    <div className="text-xs text-gray-500">Tax & Accounting</div>
+                    <div className="text-xl font-bold text-gray-900">{t('header.companyName')}</div>
+                    <div className="text-xs text-gray-500">{t('header.tagline')}</div>
                   </div>
                 </div>
               </div>
@@ -100,18 +106,19 @@ export const Header = () => {
 
             {/* Desktop CTA */}
             <div className="hidden md:flex items-center space-x-4">
+              <LanguageSwitcher variant="outline" size="sm" />
               <Button 
                 variant="outline" 
                 className="border-emerald-600 text-emerald-600 hover:bg-emerald-50"
                 onClick={() => alert('Login functionality coming soon!')}
               >
-                Client Login
+                {t('header.buttons.clientLogin')}
               </Button>
               <Button 
                 onClick={handleContactUs}
                 className="bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-700 hover:to-blue-700 text-white transform hover:scale-105 transition-all duration-200"
               >
-                Get Free Consultation
+                {t('header.buttons.freeConsultation')}
               </Button>
             </div>
 
@@ -130,8 +137,12 @@ export const Header = () => {
                         <div className="w-8 h-8 bg-gradient-to-br from-emerald-600 to-blue-600 rounded-lg flex items-center justify-center">
                           <span className="text-white font-bold text-sm">TP</span>
                         </div>
-                        <span className="text-lg font-bold text-gray-900">TaxPro</span>
+                        <span className="text-lg font-bold text-gray-900">{t('header.companyName')}</span>
                       </div>
+                    </div>
+                    
+                    <div className="flex justify-center">
+                      <LanguageSwitcher variant="outline" size="sm" />
                     </div>
                     
                     <nav className="flex flex-col space-y-4">
@@ -152,13 +163,13 @@ export const Header = () => {
                         className="w-full border-emerald-600 text-emerald-600 hover:bg-emerald-50"
                         onClick={() => alert('Login functionality coming soon!')}
                       >
-                        Client Login
+                        {t('header.buttons.clientLogin')}
                       </Button>
                       <Button 
                         onClick={handleContactUs}
                         className="w-full bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-700 hover:to-blue-700 text-white"
                       >
-                        Get Free Consultation
+                        {t('header.buttons.freeConsultation')}
                       </Button>
                     </div>
                   </div>
