@@ -1,114 +1,77 @@
 import React, { useState, useEffect } from 'react';
-import { getBusinessInfo, getServices, getTestimonials } from './contentful';
-import homeContent from "./content/home.json";
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import './App.css';
+import './i18n';
+import LandingPage from './components/LandingPage';
+import AdminPanel from './components/AdminPanel';
 
-function LandingPage() {
-  return (
-    <div>
-      <h1>{homeContent.title}</h1>
-      <h2>{homeContent.subtitle}</h2>
-      <p>{homeContent.body}</p>
-    </div>
-  );
-}
-
-// Default export for the App component
 function App() {
-  const [businessInfo, setBusinessInfo] = useState({});
-  const [services, setServices] = useState([]);
-  const [testimonials, setTestimonials] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
 
+  // Simple admin authentication (in production, use proper auth)
+  const handleAdminAccess = () => {
+    const password = prompt('Enter admin password:');
+    if (password === 'admin123') { // Change this password!
+      setIsAdmin(true);
+      localStorage.setItem('adminAccess', 'true');
+    } else {
+      alert('Incorrect password');
+    }
+  };
+
+  // Check if user is already authenticated
   useEffect(() => {
-    const fetchContent = async () => {
-      try {
-        const [businessData, servicesData, testimonialsData] = await Promise.all([
-          getBusinessInfo(),
-          getServices(),
-          getTestimonials()
-        ]);
-        
-        setBusinessInfo(businessData);
-        setServices(servicesData);
-        setTestimonials(testimonialsData);
-      } catch (error) {
-        console.error('Error fetching content:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchContent();
+    const adminAccess = localStorage.getItem('adminAccess');
+    if (adminAccess === 'true') {
+      setIsAdmin(true);
+    }
   }, []);
 
-  if (loading) {
-    return <div className="min-h-screen flex items-center justify-center">
-      <div className="text-xl">Loading...</div>
-    </div>;
-  }
+  // Admin logout
+  const handleLogout = () => {
+    setIsAdmin(false);
+    localStorage.removeItem('adminAccess');
+  };
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header with dynamic content */}
-      <header className="bg-gray-900 text-white py-2 px-4 text-sm">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center space-x-6">
-            <span>📞 {businessInfo.phone || '(555) 123-4567'}</span>
-            <span>✉️ {businessInfo.email || 'info@taxpro.com'}</span>
-          </div>
-        </div>
-      </header>
-
-      {/* Services Section with dynamic content */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12">Our Services</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-lg p-6">
-                <h3 className="text-xl font-bold mb-4">{service.title}</h3>
-                <p className="text-gray-600 mb-4">{service.description}</p>
-                <div className="text-emerald-600 font-bold mb-4">{service.price}</div>
-                <ul className="space-y-2">
-                  {service.features?.map((feature, idx) => (
-                    <li key={idx} className="flex items-center">
-                      <span className="text-emerald-500 mr-2">✓</span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials with dynamic content */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12">What Clients Say</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-lg p-6">
-                <div className="flex items-center mb-4">
-                  {[...Array(testimonial.rating || 5)].map((_, i) => (
-                    <span key={i} className="text-yellow-400">⭐</span>
-                  ))}
+    <div className="App">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route 
+            path="/admin" 
+            element={
+              isAdmin ? (
+                <div>
+                  <div className="fixed top-4 right-4 z-50">
+                    <button
+                      onClick={handleLogout}
+                      className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                  <AdminPanel />
                 </div>
-                <p className="text-gray-700 mb-4">"{testimonial.reviewText}"</p>
-                <div className="font-bold">{testimonial.clientName}</div>
-                <div className="text-gray-600">{testimonial.company}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+              ) : (
+                <div className="min-h-screen flex items-center justify-center bg-gray-50">
+                  <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
+                    <h2 className="text-2xl font-bold text-center mb-6">Admin Access</h2>
+                    <button
+                      onClick={handleAdminAccess}
+                      className="w-full px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
+                    >
+                      Enter Admin Panel
+                    </button>
+                  </div>
+                </div>
+              )
+            } 
+          />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
 
-// Named export for LandingPage component
-export { LandingPage };
-
-// Default export for App component
 export default App;
