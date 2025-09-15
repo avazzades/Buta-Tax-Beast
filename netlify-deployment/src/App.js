@@ -1,5 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { getBusinessInfo, getServices, getTestimonials } from './contentful';
+import homeContent from "./content/home.json";
+
+function LandingPage() {
+  return (
+    <div>
+      <h1>{homeContent.title}</h1>
+      <h2>{homeContent.subtitle}</h2>
+      <p>{homeContent.body}</p>
+    </div>
+  );
+}
+
+export default LandingPage;
 
 function App() {
   const [businessInfo, setBusinessInfo] = useState({});
