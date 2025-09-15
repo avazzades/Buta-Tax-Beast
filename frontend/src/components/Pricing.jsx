@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { Check, Star, ArrowRight } from 'lucide-react';
-import { pricingPlans } from '../mockData';
 
 export const Pricing = () => {
+  const { t } = useTranslation();
   const [selectedPlan, setSelectedPlan] = useState(null);
 
   const handleSelectPlan = (plan) => {
@@ -19,20 +20,50 @@ export const Pricing = () => {
     alert('Our sales team will reach out to discuss your custom enterprise needs!');
   };
 
+  const pricingPlans = [
+    {
+      id: 'individual',
+      name: t('pricing.plans.individual.name'),
+      price: t('pricing.plans.individual.price'),
+      period: t('pricing.plans.individual.period'),
+      description: t('pricing.plans.individual.description'),
+      features: t('pricing.plans.individual.features', { returnObjects: true }),
+      popular: false
+    },
+    {
+      id: 'business',
+      name: t('pricing.plans.business.name'),
+      price: t('pricing.plans.business.price'),
+      period: t('pricing.plans.business.period'),
+      description: t('pricing.plans.business.description'),
+      features: t('pricing.plans.business.features', { returnObjects: true }),
+      popular: true
+    },
+    {
+      id: 'enterprise',
+      name: t('pricing.plans.enterprise.name'),
+      price: t('pricing.plans.enterprise.price'),
+      period: t('pricing.plans.enterprise.period'),
+      description: t('pricing.plans.enterprise.description'),
+      features: t('pricing.plans.enterprise.features', { returnObjects: true }),
+      popular: false
+    }
+  ];
+
   return (
     <section id="pricing" className="py-24 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
           <Badge className="mb-4 bg-indigo-100 text-indigo-800 hover:bg-indigo-200">
-            Transparent Pricing
+            {t('pricing.badge')}
           </Badge>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Choose Your Perfect
-            <span className="block text-indigo-600">Tax Solution</span>
+            {t('pricing.title')}
+            <span className="block text-indigo-600">{t('pricing.subtitle')}</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            No hidden fees, no surprises. Just transparent pricing for professional tax and accounting services.
+            {t('pricing.description')}
           </p>
         </div>
 
@@ -51,7 +82,7 @@ export const Pricing = () => {
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                   <Badge className="bg-indigo-600 text-white px-6 py-2 text-sm font-semibold">
                     <Star className="h-4 w-4 mr-1" />
-                    Most Popular
+                    {t('pricing.popular')}
                   </Badge>
                 </div>
               )}
@@ -67,8 +98,11 @@ export const Pricing = () => {
                 <div className="mb-6">
                   <div className="flex items-baseline justify-center">
                     <span className="text-5xl font-bold text-gray-900">{plan.price}</span>
-                    {plan.period && (
+                    {plan.period && (plan.period !== 'pricing') && (
                       <span className="text-xl text-gray-500 ml-2">/{plan.period}</span>
+                    )}
+                    {plan.period === 'pricing' && (
+                      <span className="text-xl text-gray-500 ml-2">{plan.period}</span>
                     )}
                   </div>
                 </div>
@@ -96,7 +130,7 @@ export const Pricing = () => {
                       : 'bg-gray-900 hover:bg-gray-800 text-white'
                   }`}
                 >
-                  {plan.name === 'Enterprise' ? 'Contact Sales' : 'Get Started'}
+                  {plan.name === t('pricing.plans.enterprise.name') ? t('pricing.buttons.contactSales') : t('pricing.buttons.getStarted')}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </CardContent>
@@ -107,20 +141,20 @@ export const Pricing = () => {
         {/* Value Proposition */}
         <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-12 text-white text-center">
           <h3 className="text-3xl font-bold mb-4">
-            Every Plan Includes Our Guarantee
+            {t('pricing.guarantee.title')}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
             <div className="text-center">
               <div className="text-2xl font-bold mb-2">100%</div>
-              <div className="opacity-90">Accuracy Guarantee</div>
+              <div className="opacity-90">{t('pricing.guarantee.accuracy')}</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold mb-2">24/7</div>
-              <div className="opacity-90">Audit Support</div>
+              <div className="opacity-90">{t('pricing.guarantee.support')}</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold mb-2">Free</div>
-              <div className="opacity-90">Consultation</div>
+              <div className="text-2xl font-bold mb-2">{t('common.free')}</div>
+              <div className="opacity-90">{t('pricing.guarantee.consultation')}</div>
             </div>
           </div>
         </div>
@@ -128,10 +162,10 @@ export const Pricing = () => {
         {/* Enterprise CTA */}
         <div className="text-center mt-16">
           <h3 className="text-2xl font-bold text-gray-900 mb-4">
-            Need a Custom Solution?
+            {t('pricing.custom.title')}
           </h3>
           <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            For large enterprises with complex accounting needs, we offer fully customized solutions with dedicated support teams.
+            {t('pricing.custom.description')}
           </p>
           <Button 
             size="lg"
@@ -139,7 +173,7 @@ export const Pricing = () => {
             onClick={handleContactSales}
             className="border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-50 font-semibold px-8 py-3"
           >
-            Contact Enterprise Sales
+            {t('pricing.custom.button')}
           </Button>
         </div>
       </div>
