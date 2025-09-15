@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import './i18n';
-import { LandingPage } from './components/LandingPage';
+import LandingPage from './components/LandingPage'; // Fixed the import
 import AdminPanel from './components/AdminPanel';
 
 function App() {
@@ -14,6 +14,7 @@ function App() {
     if (password === 'admin123') { // Change this password!
       setIsAdmin(true);
       localStorage.setItem('adminAccess', 'true');
+      window.location.href = '/admin'; // Redirect after successful login
     } else {
       alert('Incorrect password');
     }
@@ -21,10 +22,12 @@ function App() {
 
   // Check if user is already authenticated
   useEffect(() => {
-    const adminAccess = localStorage.getItem('adminAccess');
-    if (adminAccess === 'true') {
-      setIsAdmin(true);
-    }
+    const checkAdminAccess = () => {
+      const adminAccess = localStorage.getItem('adminAccess');
+      setIsAdmin(adminAccess === 'true');
+    };
+
+    checkAdminAccess();
   }, []);
 
   // Admin logout
@@ -38,35 +41,24 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          
           <Route 
             path="/admin" 
-            element={
-              isAdmin ? (
-                <div>
-                  <div className="fixed top-4 right-4 z-50">
-                    <button
-                      onClick={handleLogout}
-                      className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
-                    >
-                      Logout
-                    </button>
-                  </div>
-                  <AdminPanel />
+            element={isAdmin ? (
+              <div>
+                <div className="fixed top-4 right-4 z-50">
+                  <button
+                    onClick={handleLogout}
+                    className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                  >
+                    Logout
+                  </button>
                 </div>
-              ) : (
-                <div className="min-h-screen flex items-center justify-center bg-gray-50">
-                  <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
-                    <h2 className="text-2xl font-bold text-center mb-6">Admin Access</h2>
-                    <button
-                      onClick={handleAdminAccess}
-                      className="w-full px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
-                    >
-                      Enter Admin Panel
-                    </button>
-                  </div>
-                </div>
-              )
-            } 
+                <AdminPanel />
+              </div>
+            ) : (
+              <Navigate to="/" />
+            )}
           />
         </Routes>
       </BrowserRouter>
