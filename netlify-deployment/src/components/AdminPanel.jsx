@@ -65,15 +65,17 @@ const AdminPanel = () => {
   const [previewMode, setPreviewMode] = useState(false);
   const [saved, setSaved] = useState(false);
 
-  // Save content to localStorage
-  const saveContent = () => {
-    localStorage.setItem('landingPageContent', JSON.stringify(content));
-    setSaved(true);
-    setTimeout(() => setSaved(false), 2000);
-    
-    // In a real app, you'd send this to your backend
-    console.log('Content saved:', content);
-  };
+// Save content to localStorage
+const saveContent = () => {
+  localStorage.setItem('landingPageContent', JSON.stringify(content));
+  setSaved(true);
+  setTimeout(() => setSaved(false), 2000);
+  
+  // Trigger custom event to notify other components
+  window.dispatchEvent(new CustomEvent('contentUpdated'));
+  
+  console.log('✅ Content saved and website updated:', content);
+};
 
   // Load content from localStorage
   useEffect(() => {
