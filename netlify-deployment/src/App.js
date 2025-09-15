@@ -12,8 +12,7 @@ function LandingPage() {
   );
 }
 
-export default LandingPage;
-
+// Default export for the App component
 function App() {
   const [businessInfo, setBusinessInfo] = useState({});
   const [services, setServices] = useState([]);
@@ -108,4 +107,8 @@ function App() {
   );
 }
 
+// Named export for LandingPage component
+export { LandingPage };
+
+// Default export for App component
 export default App;
