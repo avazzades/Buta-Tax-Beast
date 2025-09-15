@@ -326,6 +326,7 @@
     "required": "Required",
     "optional": "Optional",
     "readMore": "Read More",
-    "showLess": "Show Less"
+    "showLess": "Show Less",
+    "free": "Free"
   }
 }
