@@ -5,7 +5,14 @@
       "destination": "/index.html"
     }
   ],
-  "buildCommand": "yarn build",
+  "buildCommand": "yarn install && yarn build",
   "outputDirectory": "build",
-  "framework": "create-react-app"
+  "installCommand": "yarn install",
+  "framework": "create-react-app",
+  "functions": {},
+  "build": {
+    "env": {
+      "NODE_OPTIONS": "--max-old-space-size=4096"
+    }
+  }
 }
