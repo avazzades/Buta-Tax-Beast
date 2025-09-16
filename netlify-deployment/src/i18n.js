@@ -32,7 +32,7 @@ const resources = {
           "savings": "Save 15-30% on taxes",
           "support": "Year-round support",
           "protection": "Audit protection included",
-          "experts": "Expert CPAs"
+          "experts": "Expert CPAs and Enrolled Agents"
         }
       },
       "stats": {
@@ -101,14 +101,14 @@ const resources = {
         "thank_you": "Thank you!"
       },
       "footer": {
-        "description": "Professional tax and accounting services you can trust. We help individuals and businesses in Plano and across Texas optimize their tax strategies and achieve financial success.",
+        "description": "Professional tax and accounting services you can trust. We help individuals and businesses across America to optimize their tax strategies and achieve financial success.",
         "rights": "All rights reserved."
       }
     }
   },
   es: {
     translation: {
-      "company": "BUTA Impuestos y Contabilidad",
+      "company": "Impuestos y Contabilidad",
       "tagline": "Servicios Profesionales de Impuestos y Contabilidad",
       "phone": "(972) 777-4449",
       "email": "info@butatax.com",
@@ -146,7 +146,7 @@ const resources = {
         "rating": "Calificación de Clientes"
       },
       "services": {
-        "main_title": "Servicios Profesionales de Impuestos en Plano, TX",
+        "main_title": "Servicios Profesionales de Impuestos,
         "subtitle": "Para Su Éxito",
         "description": "Desde declaraciones de impuestos individuales hasta contabilidad corporativa compleja, BUTA proporciona servicios expertos adaptados a sus necesidades.",
         "get_quote": "Obtener Cotización",
@@ -212,8 +212,8 @@ const resources = {
   },
   tr: {
     translation: {
-      "company": "BUTA Vergi ve Muhasebe",
-      "tagline": "Profesyonel Vergi ve Muhasebe Hizmetleri",
+      "company": "Vergi ve Muhasebe",
+      "tagline": "Profesyonel Hizmetleri",
       "phone": "(972) 777-4449",
       "email": "info@butatax.com",
       "address": "5700 Tennyson Pkwy Suite 300, Plano, TX 75024",
@@ -240,7 +240,7 @@ const resources = {
           "savings": "%15-30 vergi tasarrufu",
           "support": "Yıl boyu destek",
           "protection": "Denetim koruması dahil",
-          "experts": "Uzman CPA'lar"
+          "experts": "Uzman CPA'lar ve Enrolled Agent'ler"
         }
       },
       "stats": {
@@ -316,8 +316,8 @@ const resources = {
   },
   az: {
     translation: {
-      "company": "BUTA Vergi və Mühasibat",
-      "tagline": "Peşəkar Vergi və Mühasibat Xidmətləri",
+      "company": "Vergi və Mühasibat",
+      "tagline": "Peşəkar Xidmətləri",
       "phone": "(972) 777-4449",
       "email": "info@butatax.com",
       "address": "5700 Tennyson Pkwy Suite 300, Plano, TX 75024",
@@ -344,7 +344,7 @@ const resources = {
           "savings": "Vergilərdə 15-30% qənaət",
           "support": "İl boyu dəstək",
           "protection": "Audit müdafiəsi daxildir",
-          "experts": "Ekspert CPA-lar"
+          "experts": "Ekspert CPA-lar və Enrolled Agent-lər"
         }
       },
       "stats": {
@@ -378,8 +378,8 @@ const resources = {
         }
       },
       "testimonials": {
-        "title": "Plano Müştərilərimiz Nə Deyir",
-        "description": "Sadəcə bizim sözümüzü götürməyin. Burada Texas-dakı məmnun müştərilərimizin BUTA-nın xidmətləri haqqında dedikləri var.",
+        "title": "Müştərilərimiz Nə Deyir",
+        "description": "Sadəcə bizim sözümüzü götürməyin. Burada bizim məmnun müştərilərimizin BUTA-nın xidmətləri haqqında dedikləri var.",
         "sarah": {
           "review": "BUTA Tax-dan Süleyman, strateji planlaşdırmaları vasitəsilə keçən il vergilərimdə 5,000 dollardan çox qənaət etməyimə kömək etdi. Onların komandası inanılmaz dərəcədə bilgili və həssasdır."
         },
@@ -413,7 +413,7 @@ const resources = {
         "thank_you": "Təşəkkür edirik!"
       },
       "footer": {
-        "description": "Güvənə bilcoyunuz peşəkar vergi və mühasibat xidmətləri. Biz Plano və bütün Texas-dakı fərdlərin və bizneslərin vergi strategiyalarını optimallaşdırmaq və maliyyə uğuru əldə etmək üçün kömək edirik.",
+        "description": "Güvənə biləcyəniz peşəkar vergi və mühasibat xidmətləri. Biz bütün Amerikadakı fərdlərin və bizneslərin vergi strategiyalarını optimallaşdırmaq və maliyyə uğuru əldə etmək üçün kömək edirik.",
         "rights": "Bütün hüquqlar qorunur."
       }
     }
