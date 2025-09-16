@@ -65,14 +65,14 @@ const LandingPage = () => {
       id: 1,
       name: 'Sarah Johnson',
       company: 'Johnson\'s Bakery',
-      review: 'BUTA Tax and Accounting helped me save over $5,000 in taxes last year through their strategic planning. Their team is incredibly knowledgeable and responsive.',
+      review: 'Suleyman from BUTA Tax helped me save over $5,000 in taxes last year through their strategic planning. Their team is incredibly knowledgeable and responsive.',
       rating: 5
     },
     {
       id: 2,
       name: 'Michael Chen',
       company: 'InnovateTech',
-      review: 'From startup formation to complex tax situations, BUTA has been our trusted partner. Professional, reliable, and always available when we need them.',
+      review: 'From startup formation to complex tax situations, Javid and Suleyman have been our trusted partner. Professional, reliable, and always available when we need them.',
       rating: 5
     }
   ];
@@ -178,8 +178,7 @@ const LandingPage = () => {
 
             {/* Subheadline */}
             <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-              BUTA Tax and Accounting provides professional tax preparation, strategic planning, and accounting services 
-              that save you time and money. Serving individuals and businesses in Plano and across Texas.
+              BUTA Tax and Accounting provides expert tax preparation, strategic planning, and comprehensive accounting services designed to save you time and money. We proudly serve individuals and businesses in all 50 states.
             </p>
 
             {/* Key benefits */}
