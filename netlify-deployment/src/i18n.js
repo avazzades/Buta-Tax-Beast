@@ -4,8 +4,8 @@ import { initReactI18next } from 'react-i18next';
 const resources = {
   en: {
     translation: {
-      "company": "BUTA Tax and Accounting",
-      "tagline": "Professional Tax and Accounting Services",
+      "company": "Tax and Accounting",
+      "tagline": "Professional Services",
       "phone": "(972) 777-4449",
       "email": "info@butatax.com",
       "address": "5700 Tennyson Pkwy Suite 300, Plano, TX 75024",
