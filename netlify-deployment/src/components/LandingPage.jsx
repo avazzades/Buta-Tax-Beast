@@ -111,8 +111,8 @@ const LandingPage = () => {
                 <span className="text-white font-bold text-sm">BUTA</span>
               </div>
               <div>
-                <div className="text-xl font-bold text-gray-900">BUTA Tax and Accounting</div>
-                <div className="text-xs text-gray-500">Professional Tax Services</div>
+                <div className="text-xl font-bold text-gray-900">BUTA</div>
+                <div className="text-xs text-gray-500">Professional Tax and Accounting Services</div>
               </div>
             </div>
 
@@ -173,7 +173,7 @@ const LandingPage = () => {
               <span className="block bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">
                 Tax & Accounting
               </span>
-              Partner in Plano, TX
+              Partner
             </h1>
 
             {/* Subheadline */}
