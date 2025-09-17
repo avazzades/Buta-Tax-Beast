@@ -146,7 +146,7 @@ const resources = {
         "rating": "Calificación de Clientes"
       },
       "services": {
-        "main_title": "Servicios Profesionales de Impuestos,
+        "main_title": "Servicios Profesionales de Impuestos",
         "subtitle": "Para Su Éxito",
         "description": "Desde declaraciones de impuestos individuales hasta contabilidad corporativa compleja, BUTA proporciona servicios expertos adaptados a sus necesidades.",
         "get_quote": "Obtener Cotización",
