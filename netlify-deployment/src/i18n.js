@@ -136,7 +136,7 @@ const resources = {
           "savings": "Ahorre 15-30% en impuestos",
           "support": "Soporte todo el año",
           "protection": "Protección de auditoría incluida",
-          "experts": "CPAs expertos"
+          "experts": "CPAs and Enrolled Agentsexpertos"
         }
       },
       "stats": {
