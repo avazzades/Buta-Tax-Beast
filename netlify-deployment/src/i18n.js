@@ -20,7 +20,7 @@ const resources = {
         "free_consultation": "Get Free Consultation"
       },
       "hero": {
-        "trusted": "Trusted by 5,000+ clients in Texas",
+        "trusted": "Trusted by 5,000+ clients from 50 states",
         "title": "Your Trusted",
         "subtitle": "Tax & Accounting",
         "partner": "Partner",
@@ -54,7 +54,7 @@ const resources = {
         },
         "business": {
           "title": "Business Tax Services", 
-          "description": "Comprehensive tax solutions for small to medium businesses including quarterly filings and planning.",
+          "description": "Comprehensive tax solutions for small to medium businesses, including quarterly filings and planning.",
           "price": "Starting at $299",
           "features": ["Quarterly Returns", "Business Deductions", "Payroll Tax", "Strategic Planning"]
         },
@@ -66,8 +66,8 @@ const resources = {
         }
       },
       "testimonials": {
-        "title": "What Our Plano Clients Say",
-        "description": "Don't just take our word for it. Here's what our satisfied clients in Texas have to say about BUTA's services.",
+        "title": "What Our Clients Say",
+        "description": "Don't just take our word for it. Here's what our satisfied clients have to say about BUTA's services.",
         "sarah": {
           "review": "Suleyman from BUTA Tax helped me save over $5,000 in taxes last year through their strategic planning. Their team is incredibly knowledgeable and responsive."
         },
@@ -77,7 +77,7 @@ const resources = {
       },
       "contact": {
         "title": "Contact BUTA Tax and Accounting",
-        "description": "Get your tax questions answered by our expert team in Plano, TX",
+        "description": "Get your tax questions answered by our expert team",
         "call_us": "Call Us",
         "email_us": "Email Us",
         "visit_office": "Visit Our Office",
